@@ -1,0 +1,63 @@
+version: "3.1"
+
+stories:
+  # - story: happy path
+  #   steps:
+  #     - intent: greet
+  #     - action: utter_greet
+  #     - intent: mood_great
+  #     - action: utter_happy
+
+  # - story: sad path 1
+  #   steps:
+  #     - intent: greet
+  #     - action: utter_greet
+  #     - intent: mood_unhappy
+  #     - action: utter_cheer_up
+  #     - action: utter_did_that_help
+  #     - intent: affirm
+  #     - action: utter_happy
+
+  # - story: sad path 2
+  #   steps:
+  #     - intent: greet
+  #     - action: utter_greet
+  #     - intent: mood_unhappy
+  #     - action: utter_cheer_up
+  #     - action: utter_did_that_help
+  #     - intent: deny
+  #     - action: utter_goodbye
+
+  - story: check balance path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: check_balance
+      - action: utter_check_balance
+      - intent: my_name
+        entities:
+          - name: "binamra"
+      - slot_was_set:
+          - name: "binamra"
+      - action: utter_phone_number
+      - action: utter_acc_number
+      - intent: acc_number
+        entities:
+          - number: "1234567890"
+      - slot_was_set:
+          - number: "1234567890"
+      - action: action_bank
+      - action: utter_thanks
+
+  - story: transaction history path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: transaction_history
+      - action: utter_phone_number
+      - action: utter_acc_number
+      - intent: acc_number
+        entities:
+          - number: "1234567890"
+      - action: action_bank_history
+      - action: utter_thanks

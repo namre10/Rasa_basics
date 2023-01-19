@@ -1,0 +1,73 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - check_balance
+  - my_name
+  - acc_number
+  - mobile_number
+
+entities:
+  - name
+  - number
+
+slots:
+  name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: name
+  number:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: number
+
+responses:
+  utter_greet:
+    - text: "Namaste!! \nHow can I help you?"
+
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+
+  utter_happy:
+    - text: "Great, carry on!"
+
+  utter_goodbye:
+    - text: "Bye"
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+  utter_help:
+    - text: "How can I help you?"
+
+  utter_check_balance:
+    - text: "What is your name?"
+
+  utter_phone_number:
+    - text: "What is your phone number?"
+
+  utter_acc_number:
+    - text: "What is your account number?"
+
+  utter_thanks:
+    - text: "Thank you for using BankBot. GoodBye!!"
+
+actions:
+  - action_bank
+  - action_bank_history
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
